@@ -31,14 +31,12 @@ function _createFeeds() {
             {
                 id: makeId(),
                 email: 'blabla@gmail.com',
-                avatar: 'url.com/123.jpg',
-                comment: 'yofi yofi'
+                txt: 'yofi yofi'
             },
             {
                 id: makeId(),
                 email: 'blabls@gmail.com',
-                avatar: 'url.com/123.jpg',
-                comment: 'yofi yoti'
+                txt: 'yofi yoti'
             },
 
         ]
