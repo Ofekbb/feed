@@ -1,0 +1,19 @@
+.feeds {
+  background-color: rgb(255, 255, 255);
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.feed {
+  margin: 10px;
+  .email {
+    font-weight: 600;
+  }
+  .comment {
+    color: rgb(168, 168, 168);
+  }
+}
