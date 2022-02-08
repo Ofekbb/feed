@@ -6,25 +6,25 @@ import { feedService } from "../services/feed.service.local.js";
 
 export function HomePage() {
   // const [isWorkerOn, setWorkerState] = useState(false)
-  const [feeds, setFeeds] = useState([]);
+  //   const [feeds, setFeeds] = useState([]);
 
-  useEffect(() => {
-    console.log("insdie:");
-    loadFeeds();
-    console.log("feed:", feeds);
-  }, []);
+  //   useEffect(() => {
+  //     console.log("insdie:");
+  //     loadFeeds();
+  //     console.log("feed:", feeds);
+  //   }, []);
 
-  const loadFeeds = async () => {
-    const feedsToSet = await feedService.query();
-    console.log(feedsToSet);
-    setFeeds(feedsToSet);
-  };
+  //   const loadFeeds = async () => {
+  //     const feedsToSet = await feedService.query();
+  //     console.log(feedsToSet);
+  //     setFeeds(feedsToSet);
+  //   };
 
-  if (!feeds) return <span>Loading..</span>;
+  //   if (!feeds) return <span>Loading..</span>;
   return (
     <section className="home-page">
       <div className="main-cmp">
-        <Feeds feeds={feeds} />
+        <Feeds />
       </div>
     </section>
   );
