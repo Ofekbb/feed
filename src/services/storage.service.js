@@ -11,3 +11,5 @@ function loadFromStorage(key) {
     var val = localStorage.getItem(key)
     return JSON.parse(val)
 }
+
+//`https://robohash.org/${bug._id}.png`
