@@ -5,25 +5,25 @@ const KEY = 'feedDB'
 
 export const feedService = {
     query,
-    removeNote,
-    addNote,
-    getNoteById,
-    onUpdatedNote,
+    removeFeed,
+    addFeed,
+    getFeedById,
+    onUpdatedFeed,
 
 };
 
 
-_createNotes()
+_createFeeds()
 
 function query(filterBy = null) {
     const feeds = _loadFromStorage()
     if (!filterBy) return Promise.resolve(feeds)
-    const filteredNotes = _getFilteredNotes(feeds, filterBy)
-    return Promise.resolve(filteredNotes)
+    const filteredFeeds = _getFilteredFeeds(feeds, filterBy)
+    return Promise.resolve(filteredFeeds)
 
 }
 
-function _createNotes() {
+function _createFeeds() {
     var feeds = _loadFromStorage();
     if (!feeds || !feeds.length) {
         feeds = [
@@ -47,37 +47,23 @@ function _createNotes() {
 }
 
 
-// function removeNote(id) {
-//     var feeds = _loadFromStorage();
-//     const feedIdx = feeds.findIndex((feed) => feed.id === id);
-//     feeds.splice(feedIdx, 1);
-//     _saveToStorage(feeds);
-//     return Promise.resolve(feeds);
-// }
-
-
-
-function addNote(userNote) {
+function removeFeed(id) {
     var feeds = _loadFromStorage();
-
-    if (userNote.type === 'feed-todos') {
-        let userNoteEdit = userNote.info.todos.map(todo => {
-            return {
-                txt: todo,
-                doneAt: null,
-                id: utilService.makeId()
-            }
-        });
-        console.log(userNoteEdit)
-        userNote.info.todos = userNoteEdit
-    }
-
-    feeds.unshift(userNote);
+    const feedIdx = feeds.findIndex((feed) => feed.id === id);
+    feeds.splice(feedIdx, 1);
     _saveToStorage(feeds);
     return Promise.resolve(feeds);
 }
 
-function getNoteById(feedId) {
+
+function addFeed(userFeed) {
+    var feeds = _loadFromStorage();
+    feeds.unshift(userFeed);
+    _saveToStorage(feeds);
+    return Promise.resolve(feeds);
+}
+
+function getFeedById(feedId) {
     var feeds = _loadFromStorage();
     var feed = feeds.find(function (feed) {
         return feedId === feed.id
@@ -85,17 +71,17 @@ function getNoteById(feedId) {
     return Promise.resolve(feed)
 }
 
-function onUpdatedNote(updatedNote) {
+function onUpdatedFeed(updatedFeed) {
     let feeds = _loadFromStorage()
-    let feedIdx = feeds.findIndex((feed) => feed.id === updatedNote.id)
-    feeds[feedIdx] = updatedNote
+    let feedIdx = feeds.findIndex((feed) => feed.id === updatedFeed.id)
+    feeds[feedIdx] = updatedFeed
     _saveToStorage(feeds)
     return Promise.resolve(feeds)
 }
 
-function _getFilteredNotes(feeds, value) {
+function _getFilteredFeeds(feeds, value) {
     return feeds.filter(feed => {
-        return feed.info.title.includes(value)
+        return feed.email.includes(value)
     })
 
 }
