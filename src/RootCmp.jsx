@@ -1,6 +1,6 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { HomePage } from './pages/HomePage.jsx';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { HomePage } from "./pages/HomePage.jsx";
 
 // Routes
 // import routes from './routes.js';
@@ -8,16 +8,16 @@ import { HomePage } from './pages/HomePage.jsx';
 // Cmps
 export function RootCmp() {
   return (
-    <div className='root-cmp'>
+    <div className="root-cmp">
       <main>
         <Routes>
-            <Route element={<HomePage/>} path={'/'} />
+          <Route element={<HomePage />} path={"/"} />
         </Routes>
       </main>
-    </div >
+    </div>
   );
 
-//es6
+  //es6
 }
 
 export default RootCmp;

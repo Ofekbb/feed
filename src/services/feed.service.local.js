@@ -9,6 +9,7 @@ export const feedService = {
     addFeed,
     getFeedById,
     onUpdatedFeed,
+    makeId
 
 };
 
